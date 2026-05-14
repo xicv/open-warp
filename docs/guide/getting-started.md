@@ -6,7 +6,7 @@
 
 Download the latest `WarpLocal.app.zip` from:
 
-https://github.com/sasuke39/open-warp/releases
+https://github.com/xicv/open-warp/releases
 
 Unzip it, move `WarpLocal.app` to `/Applications`, then open it.
 

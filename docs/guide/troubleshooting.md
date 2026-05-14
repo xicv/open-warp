@@ -17,7 +17,7 @@ sh install.sh doctor
 bash /Applications/WarpLocal.app/Contents/Resources/diagnostics.sh
 
 # Option 2: One-line download and run
-bash <(curl -fsSL https://raw.githubusercontent.com/sasuke39/open-warp/main/diagnostics.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/xicv/open-warp/main/diagnostics.sh)
 ```
 
 This generates a folder on your Desktop containing:
@@ -32,7 +32,7 @@ This generates a folder on your Desktop containing:
 
 All API keys, tokens, email addresses, and home directory paths are automatically redacted. Review the files before uploading.
 
-Then open a [bug report](https://github.com/sasuke39/open-warp/issues/new?template=bug_report.yml) and paste `issue-summary.md` into the diagnostics field.
+Then open a [bug report](https://github.com/xicv/open-warp/issues/new?template=bug_report.yml) and paste `issue-summary.md` into the diagnostics field.
 
 ## macOS says the app is damaged
 

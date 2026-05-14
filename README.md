@@ -4,7 +4,7 @@ Run your own LLM inside Warp. `open-warp` is a local, open-source adapter that c
 
 **How it works:** WarpLocal patches the Warp client to route AI requests to a local Go server instead of Warp's cloud backend. The server translates Warp's protobuf protocol into OpenAI-compatible API calls, executes supported local tools, and streams responses back to the client.
 
-Documentation: [https://sasuke39.github.io/open-warp/](https://sasuke39.github.io/open-warp/)
+Documentation: [https://xicv.github.io/open-warp/](https://xicv.github.io/open-warp/)
 
 ## Features
 
@@ -28,7 +28,7 @@ Not yet supported: MCP tools, subagents, computer use, passive suggestions.
 sh ./install.sh
 ```
 
-Downloads the latest `WarpLocal.app` from [GitHub Releases](https://github.com/sasuke39/open-warp/releases) and installs it.
+Downloads the latest `WarpLocal.app` from [GitHub Releases](https://github.com/xicv/open-warp/releases) and installs it.
 
 > **macOS says the app is damaged?** Browser-downloaded unsigned apps can be blocked by Gatekeeper. Clear the quarantine attribute with:
 > ```bash
@@ -42,7 +42,7 @@ Prerequisites: Go 1.22+, Rust toolchain, [Warp source](https://github.com/nicohm
 
 ```bash
 # 1. Clone this repo
-git clone https://github.com/sasuke39/open-warp.git
+git clone https://github.com/xicv/open-warp.git
 cd open-warp
 
 # 2. Build the WarpLocal app bundle
@@ -61,10 +61,10 @@ If WarpLocal crashes or behaves unexpectedly, generate diagnostics:
 sh ./install.sh doctor
 
 # If you only have the app:
-bash <(curl -fsSL https://raw.githubusercontent.com/sasuke39/open-warp/main/diagnostics.sh)
+bash <(curl -fsSL https://raw.githubusercontent.com/xicv/open-warp/main/diagnostics.sh)
 ```
 
-Then open a [bug report](https://github.com/sasuke39/open-warp/issues/new?template=bug_report.yml) and paste the generated summary.
+Then open a [bug report](https://github.com/xicv/open-warp/issues/new?template=bug_report.yml) and paste the generated summary.
 
 See **[Troubleshooting](./docs/guide/troubleshooting.md)** for more help.
 
@@ -166,7 +166,7 @@ gofmt -w ./cmd ./internal
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=sasuke39/open-warp&type=Date)](https://star-history.com/#sasuke39/open-warp&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=xicv/open-warp&type=Date)](https://star-history.com/#xicv/open-warp&Date)
 
 ## License
 

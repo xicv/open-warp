@@ -136,6 +136,37 @@ LSREGISTER=$(find /System/Library/Frameworks/CoreServices.framework -name lsregi
 "$LSREGISTER" -f "$BUNDLE_DIR" 2>/dev/null || true
 
 echo ""
+echo "=== Step 5/5: Smoke-testing bundle ==="
+SMOKE_LOG="$(mktemp -t warplocal-smoke.XXXXXX)"
+trap 'rm -f "$SMOKE_LOG"' EXIT
+(
+  cd "$BUNDLE_DIR/Contents/MacOS"
+  ./warp > "$SMOKE_LOG" 2>&1 &
+  SMOKE_PID=$!
+  sleep 4
+  if kill -0 "$SMOKE_PID" 2>/dev/null; then
+    kill "$SMOKE_PID" 2>/dev/null || true
+    wait "$SMOKE_PID" 2>/dev/null || true
+    echo "  Process alive after 4s — UI likely up. OK."
+  else
+    wait "$SMOKE_PID" 2>/dev/null || true
+    echo "  Process exited before 4s. Tail of stderr:"
+    tail -20 "$SMOKE_LOG" | sed 's/^/    /'
+    if grep -q "no asset exists" "$SMOKE_LOG"; then
+      echo ""
+      echo "ERROR: bundled assets missing from compiled binary."
+      echo "  The asset registry built into 'warp' is missing required PNG/SVG files."
+      echo "  Verify WARP_SRC contains the full 'bundled/' asset tree before rebuilding."
+      echo "  Path examined: $WARP_SRC"
+      exit 1
+    fi
+    echo ""
+    echo "ERROR: smoke test failed — binary exited early. See log above."
+    exit 1
+  fi
+)
+
+echo ""
 echo "=== Done ==="
 echo ""
 echo "Bundle: $BUNDLE_DIR"
